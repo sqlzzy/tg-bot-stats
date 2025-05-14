@@ -159,4 +159,4 @@ statsBot.startDashboard({ port: 9999 });
 
 ## Лицензия
 
-MIT © [Ваше Имя]
+MIT © Osipov Sergey
