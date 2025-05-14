@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Статистика бота</title>
+		<link rel="stylesheet" href="style.css" />
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Статистика бота</h1>
+
+			<div class="controls">
+				<select id="periodSelect">
+					<option value="hour">По часам</option>
+					<option value="day" selected>По дням</option>
+					<option value="month">По месяцам</option>
+					<option value="year">По годам</option>
+				</select>
+			</div>
+
+			<div class="chart-container">
+				<canvas id="clicksChart"></canvas>
+			</div>
+
+			<div class="chart-container">
+				<canvas id="buttonsChart"></canvas>
+			</div>
+
+			<div id="buttonDetails"></div>
+		</div>
+
+		<script type="module" src="index.js"></script>
+	</body>
+</html>
