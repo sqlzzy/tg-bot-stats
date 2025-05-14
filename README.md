@@ -1,6 +1,6 @@
 # tg-bot-stats
 
-[![npm version](https://img.shields.io/npm/v/bot-statistics-collector.svg)](https://www.npmjs.com/package/bot-statistics-collector)
+[![npm version](https://img.shields.io/npm/v/tg-bot-stats.svg)](https://www.npmjs.com/package/tg-bot-stats)
 [![Лицензия: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 Лёгкий Node.js пакет для сбора и визуализации статистики взаимодействий с ботом, использующий SQLite для хранения данных и Chart.js для визуализации.
