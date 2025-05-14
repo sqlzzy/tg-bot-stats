@@ -1,6 +1,6 @@
 {
 	"name": "tg-bot-stats",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A package for collecting and visualizing bot statistics",
 	"main": "lib/index.js",
 	"type": "module",
