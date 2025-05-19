@@ -1,31 +1,33 @@
 # tg-bot-stats
 
 [![npm version](https://img.shields.io/npm/v/tg-bot-stats.svg)](https://www.npmjs.com/package/tg-bot-stats)
-[![Лицензия: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Лёгкий Node.js пакет для сбора и визуализации статистики взаимодействий с ботом, использующий SQLite для хранения данных и Chart.js для визуализации.
+**Russian version**: [README in Russian](README_RU.md)
 
-## Возможности
+A lightweight Node.js package for collecting and visualizing bot interaction statistics using SQLite for storage and Chart.js for visualization.
 
-- 📊 Сбор статистики нажатий кнопок и команд бота
-- 💾 Хранение данных в SQLite базе
-- 📈 Визуализация статистики с интерактивными графиками
-- 🕒 Отслеживание нажатий по времени (часы, дни, месяцы)
-- 🔍 Просмотр детальной информации о нажатиях
-- 🛠️ Настраиваемая схема данных
+## Features
 
-## Установка
+- 📊 Collect button click statistics from your bot
+- 💾 Store data in SQLite database
+- 📈 Visualize statistics with interactive charts
+- 🕒 Track clicks over time (hourly, daily, monthly)
+- 🔍 View detailed click information
+- 🛠️ Customizable data schema
+
+## Installation
 
 ```bash
 npm install tg-bot-stats
 ```
 
-## Быстрый старт
+## Quick Start
 
 ```javascript
 import TgBotStats from 'tg-bot-stats';
 
-// Инициализация с кастомной схемой
+// Initialize with custom schema
 const statsBot = new TgBotStats({
     dbPath: "./src/databases/bot_stats.db",
     defaultSchema: {
@@ -37,83 +39,83 @@ const statsBot = new TgBotStats({
     },
 });
 
-// Запись нажатия кнопки
+// Record a button click
 await statsBot.recordClick({
   eventId: 'start_button',
   userId: 'user123',
   additionalData: { platform: 'telegram' }
 });
 
-// Запуск дашборда
+// Launch dashboard
 statsBot.startDashboard({
     port: 8888,
 });
 ```
 
-## Документация API
+## API Documentation
 
 ### `new TgBotStats(options)`
 
-Создаёт новый экземпляр сборщика статистики.
+Creates a new statistics collector instance.
 
-**Параметры:**
-- `dbPath` (String): Путь к файлу SQLite (по умолчанию: './bot-stats.db')
-- `defaultSchema` (Object): Схема базы данных (по умолчанию: базовая схема для кнопок)
+**Options:**
+- `dbPath` (String): Path to SQLite database file (default: './bot-stats.db')
+- `defaultSchema` (Object): Database schema definition (default: basic button click schema)
 
-### Методы
+### Methods
 
 #### `recordClick(data)`
-Записывает факт нажатия кнопки.
+Records a button click event.
 
-**Параметры:**
-- `data` (Object): Объект с данными о нажатии (минимум `eventId`)
+**Parameters:**
+- `data` (Object): Click data object containing at least `eventId`
 
-**Возвращает:** Promise, который выполняется после сохранения записи
+**Returns:** Promise that resolves when record is saved
 
 #### `getEventStats(eventId)`
-Получает все записи о нажатиях конкретного события.
+Gets all recorded clicks for a specific button.
 
-**Параметры:**
-- `eventId` (String): Идентификатор кнопки
+**Parameters:**
+- `eventId` (String): Button identifier
 
-**Возвращает:** Promise с массивом записей о нажатиях
+**Returns:** Promise that resolves with array of click records
 
 #### `getAllStats()`
-Получает агрегированную статистику по всем кнопкам.
+Gets aggregated statistics for all buttons.
 
-**Возвращает:** Promise с объектом сводной статистики
+**Returns:** Promise that resolves with summary statistics object
 
 #### `getTimeSeriesStats(period)`
-Получает статистику по времени.
+Gets time-based statistics.
 
-**Параметры:**
-- `period` (String): 'hour', 'day', 'month' или 'year' (по умолчанию: 'day')
+**Parameters:**
+- `period` (String): 'hour', 'day', 'month', or 'year' (default: 'day')
 
-**Возвращает:** Promise с данными временных рядов
+**Returns:** Promise that resolves with time series data
 
 #### `startDashboard(options)`
-Запускает веб-сервер с дашбордом статистики.
+Starts the statistics dashboard web server.
 
-**Параметры:**
-- `port` (Number): Порт для сервера (по умолчанию: 3000)
+**Options:**
+- `port` (Number): Port to listen on (default: 3000)
 
-## Возможности дашборда
+## Dashboard Features
 
-1. **Интерактивные графики**:
-   - Линейный график нажатий по времени
-   - Столбчатая диаграмма общего количества нажатий
+1. **Interactive Charts**:
+   - Line chart showing clicks over time
+   - Bar chart showing total clicks per button
 
-2. **Выбор периода**:
-   - Просмотр данных по часам, дням, месяцам или годам
+2. **Time Period Selection**:
+   - View data grouped by hour, day, month, or year
 
-3. **Детальный просмотр**:
-   - Клик по кнопке в диаграмме показывает детальную информацию
+3. **Detailed View**:
+   - Click on any button in the bar chart to see detailed click records
 
-## Настройка
+## Customization
 
-### Кастомная схема данных
+### Custom Data Schema
 
-Расширьте стандартную схему для хранения дополнительной информации:
+Extend the default schema to store additional information:
 
 ```javascript
 const statsBot = new TgBotStats({
@@ -122,16 +124,16 @@ const statsBot = new TgBotStats({
     userId: 'TEXT',
     timestamp: 'DATETIME',
     additionalData: 'TEXT',
-    // Ваши кастомные поля:
+    // Your custom fields:
     chatType: 'TEXT',
     messageLength: 'INTEGER'
   }
 });
 ```
 
-## Примеры
+## Examples
 
-### Пример для Telegram бота
+### Telegram Bot Example
 
 ```javascript
 import TgBotStats from 'tg-bot-stats';
@@ -150,13 +152,13 @@ bot.onText(/\/start/, async (msg) => {
     }
   });
   
-  await bot.sendMessage(msg.chat.id, 'Добро пожаловать!');
+  await bot.sendMessage(msg.chat.id, 'Welcome!');
 });
 
-// Запуск дашборда
+// Start dashboard
 statsBot.startDashboard({ port: 9999 });
 ```
 
-## Лицензия
+## License
 
 MIT © Osipov Sergey
